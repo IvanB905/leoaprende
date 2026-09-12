@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeoAprende | Repositorio de Recursos para la Lectoescritura (Todo Integrado)</title>
+    <!-- Fuentes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <style>
+        :root {
+            --color-primary: #4f46e5;
+            --color-primary-hover: #4338ca;
+            --color-warning-custom: #f59e0b;
+            --font-main: 'Nunito', system-ui, sans-serif;
+            --font-heading: 'Quicksand', sans-serif;
+            --radius-card: 18px;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6, .brand-title {
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+
+        /* Barra de Roles */
+        .role-bar {
+            background: linear-gradient(90deg, #1e1b4b 0%, #312e81 100%);
+            font-size: 0.85rem;
+        }
+
+        .btn-xs {
+            padding: 0.2rem 0.6rem;
+            font-size: 0.78rem;
+            border-radius: 8px;
+        }
+
+        /* Identidad Visual */
+        .brand-logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(245, 158, 11, 0.35);
+        }
+
+        .brand-title {
+            font-size: 1.45rem;
+            line-height: 1.1;
+            color: #1e293b;
+        }
+
+        .brand-subtitle {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .text-warning-custom { color: #f59e0b !important; }
+
+        .btn-primary-custom {
+            background: linear-gradient(135deg, #4f46e5, #6366f1);
+            border: none;
+            color: #fff;
+            transition: all 0.25s ease;
+        }
+
+        .btn-primary-custom:hover {
+            background: linear-gradient(135deg, #4338ca, #4f46e5);
+            color: #fff;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 15px rgba(79, 70, 229, 0.3);
+        }
+
+        .btn-warning-custom {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            border: none;
+            color: #1e293b;
+            transition: all 0.25s ease;
+        }
+
+        .btn-warning-custom:hover {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #1e293b;
+            transform: translateY(-1px);
+        }
+
+        /* Hero */
+        .hero-section {
+            background: linear-gradient(135deg, #4338ca 0%, #6366f1 50%, #818cf8 100%);
+            color: #fff;
+            border-radius: 0 0 28px 28px;
+            padding: 3rem 1rem 3.5rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Búsqueda */
+        .search-container-box {
+            margin-top: -2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-card-main {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            padding: 1.25rem 1.75rem;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .search-input-lg {
+            border-radius: 12px;
+            padding: 0.75rem 1.25rem;
+            font-size: 1rem;
+            border: 2px solid #e2e8f0;
+        }
+
+        .search-input-lg:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+        }
+
+        /* Categorías */
+        .category-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 1rem;
+            border-radius: 50px;
+            background: #fff;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+            font-size: 0.88rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .category-pill:hover, .category-pill.active {
+            background: #4f46e5;
+            color: #fff;
+            border-color: #4f46e5;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+        }
+
+        /* Tarjetas */
+        .resource-card {
+            background: #fff;
+            border-radius: var(--radius-card);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+            border-color: #cbd5e1;
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            height: 170px;
+            overflow: hidden;
+            background: #f1f5f9;
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .resource-card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+
+        .card-badge-type {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 0.3rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .card-badge-grade {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(4px);
+            color: #fff;
+            padding: 0.3rem 0.65rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .tag-skill {
+            background-color: #e0e7ff;
+            color: #3730a3;
+            padding: 0.2rem 0.65rem;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        .pill-letter {
+            display: inline-block;
+            background: #eef2ff;
+            color: #4f46e5;
+            font-weight: 800;
+            border-radius: 6px;
+            padding: 0.1rem 0.45rem;
+            font-size: 0.75rem;
+            margin-right: 0.25rem;
+        }
+
+        /* Ruleta */
+        .wheel-pointer {
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 35px solid #1e293b;
+            margin: 0 auto -15px auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Secciones Navegables */
+        .seccion-vista {
+            display: none;
+        }
+
+        .seccion-vista.activa {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- BARRA DE ROLES SIMULADOS -->
+<div class="role-bar py-1 px-3 border-bottom text-white">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2 small">
+            <span class="badge bg-white text-dark fw-bold"><i class="bi bi-person-gear"></i> Rol Simulado:</span>
+            <span id="badgeRolActivo" class="badge bg-success px-2 py-1">
+                <i class="bi bi-person-badge"></i> Docente de Aula
+            </span>
+            <span id="descRolActivo" class="d-none d-md-inline text-light opacity-75">| Descarga directa y aporte de recursos</span>
+        </div>
+        <div class="d-flex align-items-center gap-1 mt-1 mt-md-0">
+            <span class="small text-white-50 me-1 d-none d-sm-inline">Cambiar rol:</span>
+            <button class="btn btn-xs btn-outline-light" onclick="cambiarRol('estudiante')" id="btnRol-estudiante" title="Modo Niño / Familia">
+                <i class="bi bi-emoji-smile"></i> Familia
+            </button>
+            <button class="btn btn-xs btn-outline-light active fw-bold" onclick="cambiarRol('docente')" id="btnRol-docente" title="Modo Maestra / Docente">
+                <i class="bi bi-person-badge"></i> Maestra
+            </button>
+            <button class="btn btn-xs btn-outline-light" onclick="cambiarRol('evaluador')" id="btnRol-evaluador" title="Modo Evaluador Curador">
+                <i class="bi bi-clipboard-check"></i> Evaluador
+            </button>
+            <button class="btn btn-xs btn-outline-light" onclick="cambiarRol('admin')" id="btnRol-admin" title="Modo Administrador">
+                <i class="bi bi-shield-lock"></i> Admin
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- NAVBAR PRINCIPAL -->
+<nav class="navbar navbar-expand-lg bg-white sticky-top shadow-sm py-2">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#" onclick="navegarA('catalogo')">
+            <div class="brand-logo-icon">
+                <i class="bi bi-book-half"></i>
+            </div>
+            <div>
+                <span class="brand-title">Leo<span class="text-warning-custom">Aprende</span></span>
+                <span class="d-block brand-subtitle">Repositorio de Lectoescritura Inicial</span>
+            </div>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item">
+                    <a class="nav-link fw-bold active text-primary nav-item-link" id="nav-catalogo" href="#" onclick="navegarA('catalogo')">
+                        <i class="bi bi-grid-fill me-1"></i> Catálogo de Recursos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-item-link" id="nav-juego" href="#" onclick="navegarA('juego')">
+                        <i class="bi bi-controller text-success me-1"></i> Ruleta de Sílabas
+                    </a>
+                </li>
+                <li class="nav-item" id="menu-subir">
+                    <a class="nav-link nav-item-link" id="nav-subir" href="#" onclick="navegarA('subir')">
+                        <i class="bi bi-cloud-arrow-up-fill text-primary me-1"></i> Subir Recurso
+                    </a>
+                </li>
+                <li class="nav-item" id="menu-evaluador">
+                    <a class="nav-link nav-item-link" id="nav-evaluacion" href="#" onclick="navegarA('evaluacion')">
+                        <i class="bi bi-clipboard-check-fill text-warning me-1"></i> Curaduría LORI
+                    </a>
+                </li>
+                <li class="nav-item" id="menu-admin">
+                    <a class="nav-link nav-item-link" id="nav-admin" href="#" onclick="navegarA('admin')">
+                        <i class="bi bi-speedometer2 text-danger me-1"></i> Panel Admin
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="documento_entrega_apa7.html" target="_blank">
+                        <i class="bi bi-file-earmark-text-fill text-info me-1"></i> Documento APA 7
+                    </a>
+                </li>
+            </ul>
+
+            <div class="d-flex align-items-center gap-2">
+                <button onclick="navegarA('catalogo'); document.getElementById('inputBusqueda').focus();" class="btn btn-warning-custom rounded-pill px-3 py-1 fw-bold text-dark shadow-sm">
+                    <i class="bi bi-search me-1"></i> Buscar
+                </button>
+                <button onclick="navegarA('subir')" class="btn btn-primary-custom rounded-pill px-3 py-1 fw-bold text-white shadow-sm" id="btnAccionSubir">
+                    <i class="bi bi-plus-circle me-1"></i> Nueva Ficha
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ==========================================
+     VISTA 1: CATÁLOGO PRINCIPAL Y BÚSQUEDA
+     ========================================== -->
+<div id="vista-catalogo" class="seccion-vista activa">
+    <!-- Hero Banner -->
+    <section class="hero-section text-center">
+        <div class="container position-relative" style="z-index: 2;">
+            <span class="hero-tag">
+                <i class="bi bi-stars text-warning me-1"></i> Recursos Educativos Abiertos para el Aula Infantil
+            </span>
+            <h1 class="display-5 fw-bold mb-3">Aprender a Leer es una Aventura Mágica 📚✨</h1>
+            <p class="lead max-w-700 mx-auto text-light opacity-95 mb-4" style="max-width: 750px;">
+                Repositorio digital de guías imprimibles, juegos interactivos de sílabas y lecturas con pictogramas creadas para superar el rezago lector en transición y primer grado.
+            </p>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <button onclick="document.getElementById('inputBusqueda').scrollIntoView({behavior: 'smooth'})" class="btn btn-warning-custom btn-lg rounded-pill px-4 fw-bold shadow">
+                    <i class="bi bi-compass-fill me-1"></i> Explorar Fichas
+                </button>
+                <button onclick="navegarA('juego')" class="btn btn-outline-light btn-lg rounded-pill px-4 fw-bold">
+                    <i class="bi bi-controller text-warning me-1"></i> Jugar a la Ruleta
+                </button>
+                <a href="documento_entrega_apa7.html" target="_blank" class="btn btn-light btn-lg rounded-pill px-4 fw-bold text-primary">
+                    <i class="bi bi-file-earmark-pdf-fill text-danger me-1"></i> Documento APA 7
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Caja de Búsqueda y Filtros Facetados -->
+    <div class="container search-container-box" id="buscadorBox">
+        <div class="search-card-main">
+            <div class="row g-3 align-items-center">
+                <div class="col-lg-5">
+                    <label class="form-label small fw-bold text-muted mb-1"><i class="bi bi-search"></i> Búsqueda por palabra o fonema:</label>
+                    <div class="input-group">
+                        <input type="text" id="inputBusqueda" class="form-control search-input-lg" placeholder="Ej: sílabas con M, ruleta, pictogramas, trazos..." oninput="filtrarCatalogo()">
+                        <button class="btn btn-primary-custom px-4" type="button"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-2">
+                    <label class="form-label small fw-bold text-muted mb-1"><i class="bi bi-mortarboard"></i> Grado / Nivel:</label>
+                    <select id="selectNivel" class="form-select search-input-lg py-2" onchange="filtrarCatalogo()">
+                        <option value="">Todos los niveles</option>
+                        <option value="Preescolar">Preescolar / Transición</option>
+                        <option value="1° Primaria">1.° Primaria</option>
+                        <option value="2° Primaria">2.° Primaria</option>
+                        <option value="Refuerzo">Refuerzo y Nivelación</option>
+                    </select>
+                </div>
+
+                <div class="col-sm-6 col-lg-3">
+                    <label class="form-label small fw-bold text-muted mb-1"><i class="bi bi-file-earmark"></i> Formato:</label>
+                    <select id="selectTipo" class="form-select search-input-lg py-2" onchange="filtrarCatalogo()">
+                        <option value="">Todos los formatos</option>
+                        <option value="Guía Imprimible">Guía Imprimible (PDF)</option>
+                        <option value="Juego Interactivo">Juego Interactivo Web</option>
+                        <option value="Lecturas Guiadas">Lecturas con Pictogramas</option>
+                        <option value="Grafomotricidad">Fichas de Grafomotricidad</option>
+                        <option value="Evaluación">Evaluación Diagnóstica</option>
+                    </select>
+                </div>
+
+                <div class="col-lg-2">
+                    <label class="form-label small fw-bold text-muted mb-1"><i class="bi bi-alphabet"></i> Fonema:</label>
+                    <select id="selectLetra" class="form-select search-input-lg py-2" onchange="filtrarCatalogo()">
+                        <option value="">Todas</option>
+                        <option value="M">Letra M</option>
+                        <option value="P">Letra P</option>
+                        <option value="S">Letra S</option>
+                        <option value="L">Letra L</option>
+                        <option value="T">Letra T</option>
+                        <option value="Vocales">Vocales</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Pastillas de Categorías -->
+            <div class="d-flex flex-wrap gap-2 mt-3 pt-3 border-top align-items-center">
+                <span class="small fw-bold text-muted me-2">Categorías didácticas:</span>
+                <button class="category-pill active" onclick="filtrarCategoria('', this)"><i class="bi bi-grid-fill"></i> Todos</button>
+                <button class="category-pill" onclick="filtrarCategoria('Método Silábico', this)"><i class="bi bi-card-text"></i> Método Silábico</button>
+                <button class="category-pill" onclick="filtrarCategoria('Juegos Interactivos', this)"><i class="bi bi-controller"></i> Juegos de Sílabas</button>
+                <button class="category-pill" onclick="filtrarCategoria('Comprensión Lectora', this)"><i class="bi bi-book-half"></i> Lecturas con Pictogramas</button>
+                <button class="category-pill" onclick="filtrarCategoria('Grafomotricidad y Trazos', this)"><i class="bi bi-pencil-fill"></i> Grafomotricidad</button>
+                <button class="category-pill" onclick="filtrarCategoria('Diagnóstico y Evaluación', this)"><i class="bi bi-clipboard-check"></i> Diagnóstico de Aula</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Catálogo de Tarjetas -->
+    <main class="container my-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h2 class="fw-bold text-dark mb-1">Colección de Materiales Didácticos</h2>
+                <p class="text-muted small mb-0" id="contadorResultados">Cargando recursos...</p>
+            </div>
+            <div class="d-none d-md-flex align-items-center gap-2 small text-muted">
+                <span class="badge bg-light text-dark border"><i class="bi bi-check-circle-fill text-success"></i> Curados con LORI</span>
+                <span class="badge bg-light text-dark border"><i class="bi bi-shield-check text-primary"></i> Dublin Core 15 Campos</span>
+            </div>
+        </div>
+
+        <div class="row g-4" id="contenedorTarjetas">
+            <!-- Renderizado dinámicamente con JavaScript -->
+        </div>
+
+        <div id="mensajeSinResultados" class="text-center py-5" style="display: none;">
+            <div class="display-1 text-muted mb-3"><i class="bi bi-search"></i></div>
+            <h4 class="fw-bold text-dark">No se encontraron recursos con esos filtros</h4>
+            <p class="text-muted">Prueba con otra consonante o limpia el buscador.</p>
+            <button class="btn btn-outline-primary rounded-pill px-4" onclick="limpiarFiltros()">Ver todos los recursos</button>
+        </div>
+    </main>
+</div>
+
+<!-- ==========================================
+     VISTA 2: JUEGO DE LA RULETA DE SÍLABAS
+     ========================================== -->
+<div id="vista-juego" class="seccion-vista">
+    <div class="container my-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
+                    <div class="bg-primary-custom text-white p-4 text-center position-relative">
+                        <span class="badge bg-warning text-dark fw-bold px-3 py-2 rounded-pill mb-2">
+                            <i class="bi bi-controller"></i> Recurso Lúdico Digital
+                        </span>
+                        <h2 class="fw-bold mb-1">🎡 La Ruleta Mágica de las Sílabas</h2>
+                        <p class="mb-0 opacity-90">Gira la ruleta, escucha el sonido y descubre palabras divertidas</p>
+                    </div>
+
+                    <div class="card-body p-4 text-center">
+                        <div class="d-flex justify-content-center gap-4 mb-4">
+                            <div class="bg-light px-4 py-2 rounded-3 border">
+                                <span class="d-block text-muted small fw-bold">PUNTOS</span>
+                                <span class="fs-3 fw-bold text-success" id="contadorPuntos">⭐ 0</span>
+                            </div>
+                            <div class="bg-light px-4 py-2 rounded-3 border">
+                                <span class="d-block text-muted small fw-bold">GIROS</span>
+                                <span class="fs-3 fw-bold text-primary" id="contadorGiros">🎯 0</span>
+                            </div>
+                        </div>
+
+                        <div class="position-relative d-inline-block my-3">
+                            <div class="wheel-pointer"></div>
+                            <canvas id="ruletaCanvas" width="320" height="320" style="border-radius: 50%; box-shadow: 0 10px 30px rgba(0,0,0,0.15);"></canvas>
+                        </div>
+
+                        <div class="mt-4">
+                            <button id="btnGirar" class="btn btn-warning-custom btn-lg rounded-pill px-5 py-3 fw-bold fs-4 shadow" onclick="girarRuleta()">
+                                <i class="bi bi-arrow-repeat"></i> ¡GIRAR RULETA!
+                            </button>
+                        </div>
+
+                        <div id="panelResultado" class="mt-4 p-4 rounded-4 bg-light border border-2 border-primary d-none">
+                            <span class="badge bg-primary fs-6 px-3 py-1 mb-2">¡Sílaba seleccionada!</span>
+                            <div class="display-3 fw-bold text-primary mb-2" id="textoSilaba">MA</div>
+                            <button class="btn btn-sm btn-outline-primary rounded-pill mb-3" onclick="reproducirVozActual()">
+                                <i class="bi bi-volume-up-fill"></i> Escuchar sonido de nuevo
+                            </button>
+
+                            <h5 class="fw-bold text-dark mt-2 mb-3">¿Cuál de estos dibujos empieza con esta sílaba?</h5>
+                            <div class="row g-3 justify-content-center" id="opcionesDibujos"></div>
+                            <div id="mensajeFeedback" class="mt-3 fs-5 fw-bold"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4 p-3 mb-4 bg-white">
+                    <h5 class="fw-bold text-dark mb-3"><i class="bi bi-info-circle-fill text-primary"></i> Ficha Pedagógica</h5>
+                    <ul class="list-group list-group-flush small">
+                        <li class="list-group-item d-flex justify-content-between px-0">
+                            <span class="text-muted">Estándar:</span><span class="badge bg-secondary">IEEE LOM & Dublin Core</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between px-0">
+                            <span class="text-muted">Nivel:</span><span class="fw-bold">Preescolar y 1° Primaria</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between px-0">
+                            <span class="text-muted">Edad:</span><span class="fw-bold">4 a 6 años</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between px-0">
+                            <span class="text-muted">Interactividad:</span><span class="badge bg-success">Muy Alta (Gamificada)</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between px-0">
+                            <span class="text-muted">Habilidad:</span><span class="fw-bold">Conciencia Fonológica</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between px-0">
+                            <span class="text-muted">Licencia:</span><span class="fw-bold">CC BY-SA 4.0</span>
+                        </li>
+                    </ul>
+                    <div class="alert alert-info border-0 rounded-3 mt-3 mb-0 small">
+                        <i class="bi bi-lightbulb-fill text-warning me-1"></i>
+                        <strong>Consejo docente:</strong> Proyéctala al inicio de la clase para despertar la motivación de los niños antes de realizar las actividades de escritura en papel.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==========================================
+     VISTA 3: SUBIR RECURSO (DOCENTE)
+     ========================================== -->
+<div id="vista-subir" class="seccion-vista">
+    <div class="container my-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-white">
+                    <div class="bg-primary-custom text-white p-4">
+                        <span class="badge bg-warning text-dark fw-bold px-3 py-1 rounded-pill mb-2">
+                            <i class="bi bi-cloud-arrow-up-fill"></i> Flujo de Publicación Docente
+                        </span>
+                        <h2 class="fw-bold mb-1">Aportar un Recurso al Repositorio</h2>
+                        <p class="mb-0 text-light opacity-90">Comparte fichas de trabajo, lecturas infantiles o juegos para fortalecer la enseñanza de la lectura.</p>
+                    </div>
+
+                    <div class="card-body p-4">
+                        <form id="formSubirRecurso" onsubmit="procesarSubidaRecurso(event)">
+                            <div class="mb-4">
+                                <h5 class="fw-bold text-primary border-bottom pb-2 mb-3">1. Datos Generales del Recurso</h5>
+                                <div class="row g-3">
+                                    <div class="col-md-8">
+                                        <label class="form-label fw-bold small">Título del Recurso *</label>
+                                        <input type="text" id="nuevoTitulo" class="form-control rounded-3" placeholder="Ej: Fichas de Sílabas Inversas con S y L" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label fw-bold small">Tipo de Material *</label>
+                                        <select id="nuevoTipo" class="form-select rounded-3">
+                                            <option value="Guía Imprimible (PDF)">Guía Imprimible (PDF)</option>
+                                            <option value="Juego Interactivo Web">Juego Interactivo Web</option>
+                                            <option value="Lecturas Guiadas (PDF)">Lecturas con Pictogramas</option>
+                                            <option value="Fichas de Grafomotricidad (PDF)">Fichas de Grafomotricidad</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label fw-bold small">Descripción Didáctica *</label>
+                                        <textarea id="nuevaDescripcion" class="form-control rounded-3" rows="3" placeholder="Explica el objetivo de la actividad y metodología sugerida..." required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <h5 class="fw-bold text-success border-bottom pb-2 mb-3">2. Metadatos Curriculares (Perfil IEEE LOM)</h5>
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label fw-bold small">Categoría</label>
+                                        <select id="nuevaCategoria" class="form-select rounded-3">
+                                            <option value="Método Silábico">Método Silábico</option>
+                                            <option value="Juegos Interactivos">Juegos Interactivos</option>
+                                            <option value="Comprensión Lectora">Comprensión Lectora</option>
+                                            <option value="Grafomotricidad y Trazos">Grafomotricidad y Trazos</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label fw-bold small">Habilidad</label>
+                                        <input type="text" id="nuevaHabilidad" class="form-control rounded-3" value="Conciencia Fonológica">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label fw-bold small">Nivel Educativo</label>
+                                        <select id="nuevoNivel" class="form-select rounded-3">
+                                            <option value="Preescolar y Transición">Preescolar (4-5 años)</option>
+                                            <option value="1° Primaria" selected>1.° Primaria (6-7 años)</option>
+                                            <option value="Refuerzo y Nivelación">Refuerzo Escolar</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold small">Fonemas / Sílabas</label>
+                                        <input type="text" id="nuevasLetras" class="form-control rounded-3" value="M, P, S, L">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold small">Nombre de la Maestra / Creadora *</label>
+                                        <input type="text" id="nuevoAutor" class="form-control rounded-3" placeholder="Lic. Tu Nombre y Apellido" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-end pt-3 border-top">
+                                <button type="button" class="btn btn-outline-secondary rounded-pill px-4 me-2" onclick="navegarA('catalogo')">Cancelar</button>
+                                <button type="submit" class="btn btn-primary-custom rounded-pill px-5 fw-bold shadow">
+                                    <i class="bi bi-cloud-arrow-up-fill me-1"></i> Depositar en el Repositorio
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==========================================
+     VISTA 4: CURADURÍA LORI (EVALUADOR)
+     ========================================== -->
+<div id="vista-evaluacion" class="seccion-vista">
+    <div class="container my-4">
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+            <div>
+                <span class="badge bg-warning text-dark fw-bold px-3 py-1 rounded-pill mb-1">
+                    <i class="bi bi-shield-check"></i> Rol: Comité Curador / Evaluador Pedagógico
+                </span>
+                <h2 class="fw-bold text-dark mb-0">Revisión de Calidad de Recursos (Modelo LORI)</h2>
+                <p class="text-muted small mb-0">Garantiza la pertinencia didáctica, accesibilidad y rigor tipográfico antes de publicar.</p>
+            </div>
+        </div>
+
+        <div class="row g-4" id="contenedorEvaluacion">
+            <!-- Renderizado dinámicamente -->
+        </div>
+    </div>
+</div>
+
+<!-- ==========================================
+     VISTA 5: PANEL ADMIN (ESTADÍSTICAS)
+     ========================================== -->
+<div id="vista-admin" class="seccion-vista">
+    <div class="container my-4">
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+            <div>
+                <span class="badge bg-danger fw-bold px-3 py-1 rounded-pill mb-1">
+                    <i class="bi bi-shield-lock-fill"></i> Módulo de Gestión y Gobernanza
+                </span>
+                <h2 class="fw-bold text-dark mb-0">Panel de Control y Estadísticas</h2>
+                <p class="text-muted small mb-0">Monitoreo del impacto en las aulas escolares y estado de la colección.</p>
+            </div>
+        </div>
+
+        <!-- Métricas Principales -->
+        <div class="row g-3 mb-4">
+            <div class="col-sm-6 col-lg-3">
+                <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
+                    <span class="text-muted small fw-bold d-block">TOTAL RECURSOS</span>
+                    <span class="fs-2 fw-bold text-primary" id="adminTotalRecursos">6</span>
+                    <small class="text-success mt-2 d-block"><i class="bi bi-check2"></i> 100% con Dublin Core</small>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
+                    <span class="text-muted small fw-bold d-block">RECURSOS APROBADOS</span>
+                    <span class="fs-2 fw-bold text-success" id="adminAprobados">5</span>
+                    <small class="text-muted mt-2 d-block">Visibles para descarga</small>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
+                    <span class="text-muted small fw-bold d-block">EN REVISIÓN / CURADURÍA</span>
+                    <span class="fs-2 fw-bold text-warning" id="adminPendientes">1</span>
+                    <small class="text-warning mt-2 d-block"><a href="#" onclick="navegarA('evaluacion')" class="text-decoration-none text-warning fw-bold">Ver pendientes →</a></small>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
+                    <span class="text-muted small fw-bold d-block">DESCARGAS EN AULA</span>
+                    <span class="fs-2 fw-bold text-danger" id="adminDescargas">2,556</span>
+                    <small class="text-success mt-2 d-block"><i class="bi bi-graph-up-arrow"></i> Alto impacto docente</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Matriz de Roles y Permisos -->
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white mb-4">
+            <h5 class="fw-bold text-dark mb-3"><i class="bi bi-people-fill text-warning"></i> Matriz de Roles y Permisos</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered table-sm align-middle small mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Rol de Usuario</th>
+                            <th>Buscar y Descargar</th>
+                            <th>Cargar Recursos</th>
+                            <th>Curaduría LORI</th>
+                            <th>Gestión Global</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Estudiante / Familia</strong></td><td class="text-success text-center">✓</td><td class="text-muted text-center">✗</td><td class="text-muted text-center">✗</td><td class="text-muted text-center">✗</td></tr>
+                        <tr><td><strong>Docente de Aula</strong></td><td class="text-success text-center">✓</td><td class="text-success text-center">✓</td><td class="text-muted text-center">✗</td><td class="text-muted text-center">✗</td></tr>
+                        <tr><td><strong>Comité Evaluador</strong></td><td class="text-success text-center">✓</td><td class="text-success text-center">✓</td><td class="text-success text-center">✓</td><td class="text-muted text-center">✗</td></tr>
+                        <tr class="table-primary"><td><strong>Administrador</strong></td><td class="text-success text-center">✓</td><td class="text-success text-center">✓</td><td class="text-success text-center">✓</td><td class="text-success text-center">✓</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==========================================
+     MODAL: FICHA TÉCNICA DE METADATOS COMPLETA
+     ========================================== -->
+<div class="modal fade" id="modalDetalleRecurso" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content rounded-4 border-0 shadow">
+            <div class="modal-header bg-primary-custom text-white py-3">
+                <div>
+                    <span class="badge bg-warning text-dark fw-bold mb-1" id="modalBadgeTipo">Guía</span>
+                    <h4 class="modal-title fw-bold" id="modalTitulo">Título del Recurso</h4>
+                </div>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-4" id="modalCuerpoDetalle">
+                <!-- Inyectado dinámicamente -->
+            </div>
+            <div class="modal-footer bg-light">
+                <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Cerrar</button>
+                <a href="#" id="modalBtnAccionPrincipal" target="_blank" class="btn btn-warning-custom rounded-pill px-4 fw-bold text-dark">
+                    Descargar Material
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-white mt-5 pt-5 pb-4 border-top">
+    <div class="container text-center text-muted small">
+        <p class="mb-1"><strong>LeoAprende</strong> • Repositorio Integrado de Recursos Educativos Digitales Abiertos (REDA)</p>
+        <p class="mb-0">Diseñado para la Actividad 2 • Licencias Creative Commons CC BY-NC-SA 4.0 • Cumplimiento Normas APA 7 y Ley 23 de 1982</p>
+    </div>
+</footer>
+
+<!-- SCRIPTS & BASE DE DATOS LOCAL -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+// BASE DE DATOS DE RECURSOS INTEGRADA
+let recursosDB = [
+  {
+    "id": "rec-001",
+    "titulo": "Cartilla de Sílabas Directas: Fonemas M, P, S, L",
+    "descripcion": "Cuadernillo didáctico ilustrado de 16 páginas para el reconocimiento, trazado y lectura combinatoria de sílabas directas (ma, me, mi, mo, mu; pa, pe, pi, po, pu; sa, se, si, so, su; la, le, li, lo, lu) mediante el método silábico-fonético.",
+    "tipo": "Guía Imprimible (PDF)",
+    "color": "danger",
+    "icono": "bi-file-earmark-pdf-fill",
+    "categoria": "Método Silábico",
+    "habilidad": "Decodificación y Conciencia Fonológica",
+    "letras": ["M", "P", "S", "L"],
+    "nivel": "1° Primaria",
+    "edad_recomendada": "5 a 7 años",
+    "tiempo_estimado": "25 minutos",
+    "autor": "Lic. María Elena Gómez (Maestra de Primaria)",
+    "institucion": "Red de Docentes de Básica Primaria",
+    "fecha_publicacion": "2026-02-15",
+    "licencia": "CC BY-NC-SA 4.0",
+    "descargas": 342,
+    "valoracion": 4.9,
+    "total_votos": 48,
+    "estado": "Aprobado",
+    "enlace_recurso": "recursos_archivos/cartilla_silabas_m_p_s_l.html",
+    "imagen_portada": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format&fit=crop&q=80",
+    "consejo_aula": "Aplicar en sesiones de 15 minutos en grupos pequeños. Se recomienda asociar cada sílaba con un gesto kinestésico o sonido onomatopéyico antes de iniciar el trazado."
+  },
+  {
+    "id": "rec-002",
+    "titulo": "Juego Interactivo: La Ruleta Mágica de las Sílabas",
+    "descripcion": "Aplicación lúdica web interactiva para niños. El niño gira la ruleta, descubre una sílaba, escucha su pronunciación y selecciona el objeto que inicia con ese fonema.",
+    "tipo": "Juego Interactivo Web",
+    "color": "success",
+    "icono": "bi-controller",
+    "categoria": "Juegos Interactivos",
+    "habilidad": "Discriminación Auditiva y Fonemas",
+    "letras": ["M", "P", "T", "D", "S"],
+    "nivel": "Preescolar y 1° Primaria",
+    "edad_recomendada": "4 a 6 años",
+    "tiempo_estimado": "15 minutos",
+    "autor": "Prof. Carlos Andrés Ruiz",
+    "institucion": "Grupo EduTech Infantil",
+    "fecha_publicacion": "2026-03-01",
+    "licencia": "CC BY-SA 4.0",
+    "descargas": 512,
+    "valoracion": 5.0,
+    "total_votos": 73,
+    "estado": "Aprobado",
+    "enlace_recurso": "juegos/ruleta.php",
+    "imagen_portada": "https://images.unsplash.com/photo-1596495578065-6e0763fa1178?w=600&auto=format&fit=crop&q=80",
+    "consejo_aula": "Excelente para proyectar en el televisor o tablero del salón. Los niños pasan por turnos a girar la ruleta y pronunciar el fonema en voz alta."
+  },
+  {
+    "id": "rec-003",
+    "titulo": "Lecturas Cortas con Pictogramas: La Ranita y el Oso",
+    "descripcion": "Serie de 8 textos breves de 3 a 4 renglones con apoyo de pictogramas y preguntas sencillas de comprensión literal para niños que inician la decodificación de oraciones.",
+    "tipo": "Lecturas Guiadas (PDF)",
+    "color": "primary",
+    "icono": "bi-book-half",
+    "categoria": "Comprensión Lectora",
+    "habilidad": "Comprensión Lectora y Fluidez Inicial",
+    "letras": ["M", "P", "S", "L", "T", "R"],
+    "nivel": "1° y 2° Primaria",
+    "edad_recomendada": "6 a 8 años",
+    "tiempo_estimado": "20 minutos",
+    "autor": "Lic. Clara Patricia Restrepo",
+    "institucion": "Colegio San Rafael",
+    "fecha_publicacion": "2026-02-28",
+    "licencia": "CC BY-NC 4.0",
+    "descargas": 418,
+    "valoracion": 4.8,
+    "total_votos": 39,
+    "estado": "Aprobado",
+    "enlace_recurso": "recursos_archivos/lecturas_pictogramas_ranita_oso.html",
+    "imagen_portada": "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&auto=format&fit=crop&q=80",
+    "consejo_aula": "Pedir a los estudiantes que sigan el texto con su dedo índice. Leer primero la maestra en voz alta como modelo y luego en coro con los niños."
+  },
+  {
+    "id": "rec-004",
+    "titulo": "Fichas de Grafomotricidad y Trazos Preparatorios",
+    "descripcion": "20 fichas de estimulación motriz fina y direccionalidad del trazo para preparar la mano del niño antes de escribir las primeras letras y vocales.",
+    "tipo": "Fichas de Grafomotricidad (PDF)",
+    "color": "warning",
+    "icono": "bi-pencil-fill",
+    "categoria": "Grafomotricidad y Trazos",
+    "habilidad": "Coordinación Visomotriz y Preescritura",
+    "letras": ["Líneas", "Curvas", "Ondas"],
+    "nivel": "Preescolar y Transición",
+    "edad_recomendada": "4 a 5 años",
+    "tiempo_estimado": "15 minutos",
+    "autor": "Diana Morales (Terapeuta Ocupacional)",
+    "institucion": "Centro Crecer",
+    "fecha_publicacion": "2026-01-20",
+    "licencia": "CC BY 4.0",
+    "descargas": 620,
+    "valoracion": 4.9,
+    "total_votos": 54,
+    "estado": "Aprobado",
+    "enlace_recurso": "recursos_archivos/fichas_grafomotricidad.html",
+    "imagen_portada": "https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=600&auto=format&fit=crop&q=80",
+    "consejo_aula": "Trabajar primero en plano vertical con témperas y dedos antes de pasar a la hoja de papel con crayolas gruesas."
+  },
+  {
+    "id": "rec-005",
+    "titulo": "Evaluación Diagnóstica: Test de Conciencia Fonológica",
+    "descripcion": "Protocolo de evaluación individual de 10 minutos para identificar el nivel de desarrollo fonológico en niños que ingresan a primer grado.",
+    "tipo": "Evaluación Diagnóstica Docente",
+    "color": "info",
+    "icono": "bi-clipboard-check-fill",
+    "categoria": "Diagnóstico y Evaluación",
+    "habilidad": "Detección de Rezagos Lectores",
+    "letras": ["Todas"],
+    "nivel": "Transición y 1° Primaria",
+    "edad_recomendada": "5 a 6 años",
+    "tiempo_estimado": "10 minutos",
+    "autor": "Equipo Psico-Orientador Escolar",
+    "institucion": "Red de Orientadores",
+    "fecha_publicacion": "2026-03-05",
+    "licencia": "CC BY-NC 4.0",
+    "descargas": 289,
+    "valoracion": 4.9,
+    "total_votos": 31,
+    "estado": "Aprobado",
+    "enlace_recurso": "recursos_archivos/test_conciencia_fonologica.html",
+    "imagen_portada": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&auto=format&fit=crop&q=80",
+    "consejo_aula": "Aplicar durante las dos primeras semanas de clase como línea base para organizar grupos de apoyo específicos."
+  },
+  {
+    "id": "rec-006",
+    "titulo": "Dominó Silábico: Asociación Letra-Imagen",
+    "descripcion": "Juego didáctico recortable de 28 fichas tipo dominó para que los niños formen palabras bisílabas (me-sa, lu-pa, pa-to, so-pa) de manera cooperativa.",
+    "tipo": "Material Lúdico Manipulativo (PDF)",
+    "color": "secondary",
+    "icono": "bi-puzzle-fill",
+    "categoria": "Juegos Interactivos",
+    "habilidad": "Síntesis Silábica y Formación de Palabras",
+    "letras": ["M", "P", "S", "L", "T"],
+    "nivel": "1° Primaria y Refuerzo",
+    "edad_recomendada": "5 a 7 años",
+    "tiempo_estimado": "20 minutos",
+    "autor": "Maestra Laura Sofía Torres",
+    "institucion": "Escuela Rural Nueva Esperanza",
+    "fecha_publicacion": "2026-03-08",
+    "licencia": "CC BY-NC 4.0",
+    "descargas": 375,
+    "valoracion": 4.7,
+    "total_votos": 27,
+    "estado": "En Revisión",
+    "enlace_recurso": "recursos_archivos/domino_silabico.html",
+    "imagen_portada": "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=600&auto=format&fit=crop&q=80",
+    "consejo_aula": "Imprimir en cartulina y laminar. Permitir que jueguen en parejas de 2 a 4 niños."
+  }
+];
+
+// NAVEGACIÓN ENTRE VISTAS
+function navegarA(seccionId) {
+    document.querySelectorAll('.seccion-vista').forEach(s => s.classList.remove('activa'));
+    document.querySelectorAll('.nav-item-link').forEach(n => n.classList.remove('active', 'text-primary', 'fw-bold'));
+
+    const vistaDestino = document.getElementById(`vista-${seccionId}`);
+    const navDestino = document.getElementById(`nav-${seccionId}`);
+
+    if (vistaDestino) vistaDestino.classList.add('activa');
+    if (navDestino) navDestino.classList.add('active', 'text-primary', 'fw-bold');
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    if (seccionId === 'catalogo') renderizarCatalogo();
+    if (seccionId === 'juego') dibujarRuleta();
+    if (seccionId === 'evaluacion') renderizarEvaluacion();
+    if (seccionId === 'admin') actualizarAdminStats();
+}
+
+// CONTROL DE ROLES SIMULADOS
+let rolActual = 'docente';
+const infoRoles = {
+    'estudiante': { nombre: 'Niño / Familia', badge: 'bg-info text-dark', desc: 'Modo Lúdico para aprender jugando' },
+    'docente': { nombre: 'Docente de Aula', badge: 'bg-success', desc: 'Descarga directa y aporte de recursos' },
+    'evaluador': { nombre: 'Comité Evaluador', badge: 'bg-warning text-dark', desc: 'Curaduría pedagógica y calidad' },
+    'admin': { nombre: 'Administrador', badge: 'bg-danger', desc: 'Gestión general y métricas' }
+};
+
+function cambiarRol(rol) {
+    rolActual = rol;
+    document.querySelectorAll('.role-bar button').forEach(b => b.classList.remove('active', 'fw-bold'));
+    document.getElementById(`btnRol-${rol}`).classList.add('active', 'fw-bold');
+
+    const badge = document.getElementById('badgeRolActivo');
+    badge.className = `badge ${infoRoles[rol].badge} px-2 py-1`;
+    badge.innerHTML = `<i class="bi bi-person-badge"></i> ${infoRoles[rol].nombre}`;
+    document.getElementById('descRolActivo').textContent = `| ${infoRoles[rol].desc}`;
+
+    // Visibilidad de pestañas según rol
+    document.getElementById('menu-subir').style.display = (rol === 'estudiante') ? 'none' : 'block';
+    document.getElementById('menu-evaluador').style.display = (rol === 'evaluador' || rol === 'admin') ? 'block' : 'none';
+    document.getElementById('menu-admin').style.display = (rol === 'admin') ? 'block' : 'none';
+    document.getElementById('btnAccionSubir').style.display = (rol === 'estudiante') ? 'none' : 'inline-block';
+}
+
+// RENDERIZADO DEL CATÁLOGO
+let filtroCategoriaActual = '';
+
+function renderizarCatalogo(lista = recursosDB) {
+    const contenedor = document.getElementById('contenedorTarjetas');
+    contenedor.innerHTML = '';
+    
+    let visibles = 0;
+
+    lista.forEach(r => {
+        visibles++;
+        const letrasHTML = r.letras.map(l => `<span class="pill-letter">${l}</span>`).join('');
+        const botonAccion = r.tipo.includes('Juego') 
+            ? `<button onclick="navegarA('juego')" class="btn btn-sm btn-success fw-bold rounded-pill px-3"><i class="bi bi-play-fill"></i> Jugar</button>`
+            : `<a href="${r.enlace_recurso}" target="_blank" onclick="sumarDescarga('${r.id}')" class="btn btn-sm btn-warning-custom fw-bold rounded-pill px-3 text-dark"><i class="bi bi-cloud-arrow-down-fill"></i> Descargar</a>`;
+
+        const cardHTML = `
+        <div class="col-md-6 col-lg-4">
+            <div class="resource-card">
+                <div class="card-img-wrapper">
+                    <img src="${r.imagen_portada}" class="card-img-top" alt="${r.titulo}">
+                    <span class="card-badge-type bg-${r.color} text-white">${r.tipo}</span>
+                    <span class="card-badge-grade"><i class="bi bi-mortarboard-fill"></i> ${r.nivel}</span>
+                </div>
+                <div class="p-3 d-flex flex-column flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="tag-skill">${r.habilidad}</span>
+                        <span class="small text-warning fw-bold"><i class="bi bi-star-fill"></i> ${r.valoracion} (${r.total_votos})</span>
+                    </div>
+                    <h5 class="fw-bold mb-2">
+                        <a href="#" onclick="abrirModalDetalle('${r.id}')" class="text-dark text-decoration-none hover-link">${r.titulo}</a>
+                    </h5>
+                    <p class="small text-muted mb-3" style="display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">
+                        ${r.descripcion}
+                    </p>
+                    <div class="mb-3">
+                        <small class="text-muted d-block fw-bold mb-1">Fonemas:</small>
+                        ${letrasHTML}
+                    </div>
+                    <div class="mt-auto pt-2 border-top d-flex justify-content-between align-items-center">
+                        <span class="small text-muted"><i class="bi bi-download"></i> <span id="count-${r.id}">${r.descargas}</span></span>
+                        <div class="d-flex gap-1">
+                            <button onclick="abrirModalDetalle('${r.id}')" class="btn btn-sm btn-outline-primary fw-bold rounded-pill px-3">Ficha Técnica</button>
+                            ${botonAccion}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `;
+        contenedor.innerHTML += cardHTML;
+    });
+
+    document.getElementById('contadorResultados').textContent = `Mostrando ${visibles} recursos pedagógicos`;
+    document.getElementById('mensajeSinResultados').style.display = visibles === 0 ? 'block' : 'none';
+}
+
+function filtrarCatalogo() {
+    const q = document.getElementById('inputBusqueda').value.toLowerCase().trim();
+    const nivel = document.getElementById('selectNivel').value.toLowerCase();
+    const tipo = document.getElementById('selectTipo').value.toLowerCase();
+    const letra = document.getElementById('selectLetra').value.toUpperCase();
+
+    const filtrados = recursosDB.filter(r => {
+        const matchQ = !q || r.titulo.toLowerCase().includes(q) || r.descripcion.toLowerCase().includes(q) || r.categoria.toLowerCase().includes(q) || r.letras.join(' ').toLowerCase().includes(q);
+        const matchNivel = !nivel || r.nivel.toLowerCase().includes(nivel);
+        const matchTipo = !tipo || r.tipo.toLowerCase().includes(tipo);
+        const matchLetra = !letra || r.letras.join(', ').toUpperCase().includes(letra);
+        const matchCat = !filtroCategoriaActual || r.categoria === filtroCategoriaActual;
+        return matchQ && matchNivel && matchTipo && matchLetra && matchCat;
+    });
+
+    renderizarCatalogo(filtrados);
+}
+
+function filtrarCategoria(cat, btn) {
+    filtroCategoriaActual = cat;
+    document.querySelectorAll('.category-pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    filtrarCatalogo();
+}
+
+function limpiarFiltros() {
+    document.getElementById('inputBusqueda').value = '';
+    document.getElementById('selectNivel').value = '';
+    document.getElementById('selectTipo').value = '';
+    document.getElementById('selectLetra').value = '';
+    filtroCategoriaActual = '';
+    document.querySelectorAll('.category-pill').forEach(b => b.classList.remove('active'));
+    document.querySelector('.category-pill').classList.add('active');
+    renderizarCatalogo();
+}
+
+function sumarDescarga(id) {
+    const r = recursosDB.find(x => x.id === id);
+    if (r) {
+        r.descargas++;
+        const el = document.getElementById(`count-${id}`);
+        if (el) el.textContent = r.descargas;
+    }
+}
+
+// MODAL DE DETALLE Y METADATOS DUBLIN CORE & IEEE LOM
+function abrirModalDetalle(id) {
+    const r = recursosDB.find(x => x.id === id);
+    if (!r) return;
+
+    document.getElementById('modalTitulo').textContent = r.titulo;
+    document.getElementById('modalBadgeTipo').textContent = r.tipo;
+
+    const btnAccion = document.getElementById('modalBtnAccionPrincipal');
+    if (r.tipo.includes('Juego')) {
+        btnAccion.textContent = 'Jugar Ahora';
+        btnAccion.onclick = () => { bootstrap.Modal.getInstance(document.getElementById('modalDetalleRecurso')).hide(); navegarA('juego'); };
+        btnAccion.href = '#';
+    } else {
+        btnAccion.textContent = 'Descargar Material (PDF)';
+        btnAccion.onclick = () => sumarDescarga(r.id);
+        btnAccion.href = r.enlace_recurso;
+    }
+
+    document.getElementById('modalCuerpoDetalle').innerHTML = `
+        <div class="row g-4">
+            <div class="col-lg-5 text-center">
+                <img src="${r.imagen_portada}" class="img-fluid rounded-4 shadow-sm mb-3" style="max-height:220px;width:100%;object-fit:cover;">
+                <div class="alert alert-warning text-start small mb-0 rounded-3 border-warning">
+                    <strong><i class="bi bi-lightbulb-fill"></i> Orientación de Aula:</strong><br>
+                    ${r.consejo_aula}
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <h5 class="fw-bold">Descripción Pedagógica</h5>
+                <p class="text-secondary small mb-3">${r.descripcion}</p>
+
+                <ul class="nav nav-tabs mb-3 small" role="tablist">
+                    <li class="nav-item"><button class="nav-link active fw-bold" data-bs-toggle="tab" data-bs-target="#tab-dc">Dublin Core (15 Campos)</button></li>
+                    <li class="nav-item"><button class="nav-link fw-bold" data-bs-toggle="tab" data-bs-target="#tab-lom">Perfil IEEE LOM</button></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="tab-dc">
+                        <table class="table table-sm table-bordered small">
+                            <tr><th style="width:30%;">Title:</th><td>${r.titulo}</td></tr>
+                            <tr><th>Creator:</th><td>${r.autor}</td></tr>
+                            <tr><th>Subject:</th><td>Lectoescritura, ${r.categoria}, Fonemas ${r.letras.join(', ')}</td></tr>
+                            <tr><th>Publisher:</th><td>LeoAprende - REDA</td></tr>
+                            <tr><th>Date:</th><td>${r.fecha_publicacion}</td></tr>
+                            <tr><th>Type:</th><td>EducationalResource</td></tr>
+                            <tr><th>Identifier:</th><td><code>URN:NBN:ES:LEO-${r.id}</code></td></tr>
+                            <tr><th>Rights:</th><td><span class="badge bg-success">${r.licencia}</span></td></tr>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="tab-lom">
+                        <table class="table table-sm table-bordered small">
+                            <tr><th style="width:30%;">Interactividad:</th><td>${r.tipo.includes('Juego') ? 'Muy Alta (Gamificada)' : 'Media / Expositiva'}</td></tr>
+                            <tr><th>Usuario Final:</th><td>Estudiante mediado por Docente</td></tr>
+                            <tr><th>Rango de Edad:</th><td>${r.edad_recomendada}</td></tr>
+                            <tr><th>Tiempo Estimado:</th><td>${r.tiempo_estimado}</td></tr>
+                            <tr><th>Dificultad:</th><td>Fácil / Progresiva</td></tr>
+                            <tr><th>Costo:</th><td>Gratuito (Acceso Abierto)</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    const modal = new bootstrap.Modal(document.getElementById('modalDetalleRecurso'));
+    modal.show();
+}
+
+// JUEGO DE LA RULETA (CANVAS Y SÍNTESIS DE VOZ)
+const silabasRuleta = [
+    { silaba: "MA", palabra: "Mano", emoji: "✋", distractores: [{palabra:"Pelota", emoji:"⚽"}, {palabra:"Sol", emoji:"☀️"}] },
+    { silaba: "PA", palabra: "Pato", emoji: "🦆", distractores: [{palabra:"Luna", emoji:"🌙"}, {palabra:"Mesa", emoji:"🪑"}] },
+    { silaba: "SO", palabra: "Sol", emoji: "☀️", distractores: [{palabra:"Gato", emoji:"🐱"}, {palabra:"Pera", emoji:"🍐"}] },
+    { silaba: "LU", palabra: "Luna", emoji: "🌙", distractores: [{palabra:"Taza", emoji:"☕"}, {palabra:"Dado", emoji:"🎲"}] },
+    { silaba: "ME", palabra: "Mesa", emoji: "🪑", distractores: [{palabra:"Sapo", emoji:"🐸"}, {palabra:"León", emoji:"🦁"}] },
+    { silaba: "PI", palabra: "Piña", emoji: "🍍", distractores: [{palabra:"Mariposa", emoji:"🦋"}, {palabra:"Tortuga", emoji:"🐢"}] },
+    { silaba: "SA", palabra: "Sapo", emoji: "🐸", distractores: [{palabra:"Pato", emoji:"🦆"}, {palabra:"Lápiz", emoji:"✏️"}] },
+    { silaba: "LE", palabra: "León", emoji: "🦁", distractores: [{palabra:"Moneda", emoji:"🪙"}, {palabra:"Pez", emoji:"🐟"}] }
+];
+
+const coloresRuleta = ["#ef4444", "#f59e0b", "#10b981", "#06b6d4", "#3b82f6", "#8b5cf6", "#ec4899", "#14b8a6"];
+let anguloActual = 0;
+let girandoRuleta = false;
+let puntosRuleta = 0;
+let girosRuleta = 0;
+let itemActual = null;
+
+function dibujarRuleta() {
+    const canvas = document.getElementById('ruletaCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const radio = canvas.width / 2;
+    const total = silabasRuleta.length;
+    const paso = (2 * Math.PI) / total;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < total; i++) {
+        const ini = anguloActual + i * paso;
+        const fin = ini + paso;
+        ctx.beginPath();
+        ctx.moveTo(radio, radio);
+        ctx.arc(radio, radio, radio - 5, ini, fin);
+        ctx.fillStyle = coloresRuleta[i];
+        ctx.fill();
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = '#fff';
+        ctx.stroke();
+
+        ctx.save();
+        ctx.translate(radio, radio);
+        ctx.rotate(ini + paso / 2);
+        ctx.textAlign = 'right';
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 22px Quicksand, sans-serif';
+        ctx.fillText(silabasRuleta[i].silaba, radio - 30, 8);
+        ctx.restore();
+    }
+
+    ctx.beginPath();
+    ctx.arc(radio, radio, 30, 0, 2 * Math.PI);
+    ctx.fillStyle = '#1e1b4b';
+    ctx.fill();
+    ctx.strokeStyle = '#fbbf24';
+    ctx.lineWidth = 4;
+    ctx.stroke();
+
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 15px Nunito';
+    ctx.textAlign = 'center';
+    ctx.fillText('LEO', radio, radio + 5);
+}
+
+function girarRuleta() {
+    if (girandoRuleta) return;
+    girandoRuleta = true;
+    girosRuleta++;
+    document.getElementById('contadorGiros').textContent = `🎯 ${girosRuleta}`;
+    document.getElementById('panelResultado').classList.add('d-none');
+    document.getElementById('mensajeFeedback').textContent = '';
+
+    const vueltas = Math.floor(Math.random() * 5 + 5);
+    const extra = Math.random() * 2 * Math.PI;
+    const fin = anguloActual + (vueltas * 2 * Math.PI) + extra;
+    const inicioTiempo = performance.now();
+    const anguloIni = anguloActual;
+    const duracion = 3200;
+
+    function anim(t) {
+        const p = Math.min((t - inicioTiempo) / duracion, 1);
+        const ease = 1 - Math.pow(1 - p, 3);
+        anguloActual = anguloIni + (fin - anguloIni) * ease;
+        dibujarRuleta();
+        if (p < 1) {
+            requestAnimationFrame(anim);
+        } else {
+            girandoRuleta = false;
+            evaluarGanadorRuleta();
+        }
+    }
+    requestAnimationFrame(anim);
+}
+
+function evaluarGanadorRuleta() {
+    const total = silabasRuleta.length;
+    const paso = (2 * Math.PI) / total;
+    let norm = (anguloActual % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+    let punt = (1.5 * Math.PI - norm + 2 * Math.PI) % (2 * Math.PI);
+    let idx = Math.floor(punt / paso) % total;
+
+    itemActual = silabasRuleta[idx];
+    const panel = document.getElementById('panelResultado');
+    document.getElementById('textoSilaba').textContent = itemActual.silaba;
+    panel.classList.remove('d-none');
+
+    reproducirVozActual();
+
+    const opContainer = document.getElementById('opcionesDibujos');
+    opContainer.innerHTML = '';
+    const ops = [
+        { palabra: itemActual.palabra, emoji: itemActual.emoji, ok: true },
+        ...itemActual.distractores.map(d => ({ palabra: d.palabra, emoji: d.emoji, ok: false }))
+    ].sort(() => Math.random() - 0.5);
+
+    ops.forEach(o => {
+        const col = document.createElement('div');
+        col.className = 'col-4';
+        col.innerHTML = `
+            <button class="btn btn-outline-secondary w-100 p-3 rounded-4 bg-white shadow-sm btn-op-juego" onclick="comprobarRespuestaJuego(${o.ok}, this)">
+                <div class="display-5">${o.emoji}</div>
+                <div class="fw-bold fs-6 mt-1">${o.palabra}</div>
+            </button>
+        `;
+        opContainer.appendChild(col);
+    });
+}
+
+function reproducirVozActual() {
+    if (itemActual && 'speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(`¡La sílaba es: ${itemActual.silaba}!`);
+        u.lang = 'es-ES';
+        u.rate = 0.85;
+        window.speechSynthesis.speak(u);
+    }
+}
+
+function comprobarRespuestaJuego(esCorrecto, btn) {
+    document.querySelectorAll('.btn-op-juego').forEach(b => b.disabled = true);
+    const fb = document.getElementById('mensajeFeedback');
+
+    if (esCorrecto) {
+        btn.className = 'btn btn-success w-100 p-3 rounded-4 text-white shadow-sm';
+        fb.className = 'mt-3 fs-5 fw-bold text-success';
+        fb.textContent = `🎉 ¡Correcto! ${itemActual.palabra} empieza por ${itemActual.silaba}`;
+        puntosRuleta += 10;
+        document.getElementById('contadorPuntos').textContent = `⭐ ${puntosRuleta}`;
+    } else {
+        btn.className = 'btn btn-danger w-100 p-3 rounded-4 text-white shadow-sm';
+        fb.className = 'mt-3 fs-6 fw-bold text-danger';
+        fb.textContent = '¡Casi! Inténtalo en el siguiente giro 😊';
+    }
+}
+
+// SUBIDA DE NUEVOS RECURSOS
+function procesarSubidaRecurso(e) {
+    e.preventDefault();
+    const titulo = document.getElementById('nuevoTitulo').value;
+    const desc = document.getElementById('nuevaDescripcion').value;
+    const tipo = document.getElementById('nuevoTipo').value;
+    const cat = document.getElementById('nuevaCategoria').value;
+    const nivel = document.getElementById('nuevoNivel').value;
+    const autor = document.getElementById('nuevoAutor').value;
+    const letras = document.getElementById('nuevasLetras').value.split(',').map(s => s.trim());
+
+    const nuevo = {
+        id: `rec-00${recursosDB.length + 1}`,
+        titulo: titulo,
+        descripcion: desc,
+        tipo: tipo,
+        color: "primary",
+        icono: "bi-file-earmark-check",
+        categoria: cat,
+        habilidad: document.getElementById('nuevaHabilidad').value,
+        letras: letras,
+        nivel: nivel,
+        edad_recomendada: "5 a 7 años",
+        tiempo_estimado: "20 minutos",
+        autor: autor,
+        institucion: "Escuela Local",
+        fecha_publicacion: new Date().toISOString().split('T')[0],
+        licencia: "CC BY-NC-SA 4.0",
+        descargas: 0,
+        valoracion: 5.0,
+        total_votos: 1,
+        estado: "En Revisión",
+        enlace_recurso: "recursos_archivos/cartilla_silabas_m_p_s_l.html",
+        imagen_portada: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format&fit=crop&q=80",
+        consejo_aula: "Aplicar en grupos pequeños de 3 a 5 estudiantes."
+    };
+
+    recursosDB.unshift(nuevo);
+    alert(`¡Recurso "${titulo}" agregado con éxito!\nHa entrado al flujo en estado "En Revisión" para curaduría pedagógica LORI.`);
+    document.getElementById('formSubirRecurso').reset();
+    navegarA('catalogo');
+}
+
+// CURADURÍA LORI
+function renderizarEvaluacion() {
+    const cont = document.getElementById('contenedorEvaluacion');
+    cont.innerHTML = '';
+
+    recursosDB.forEach(r => {
+        const esPendiente = r.estado === 'En Revisión';
+        cont.innerHTML += `
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm rounded-4 p-4 bg-white h-100 ${esPendiente ? 'border border-2 border-warning' : ''}">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge ${esPendiente ? 'bg-warning text-dark' : 'bg-success'}">${r.estado}</span>
+                    <code>${r.id}</code>
+                </div>
+                <h5 class="fw-bold mb-1">${r.titulo}</h5>
+                <p class="small text-muted mb-2"><strong>Autor:</strong> ${r.autor} | ${r.nivel}</p>
+                <p class="small text-secondary mb-3">${r.descripcion}</p>
+
+                <div class="p-2 bg-light rounded-3 small border mb-3">
+                    <div class="d-flex justify-content-between mb-1"><span>Rigor Fonológico:</span><strong class="text-success">5 / 5 ⭐</strong></div>
+                    <div class="d-flex justify-content-between mb-1"><span>Tipografía Escolar:</span><strong class="text-success">5 / 5 ⭐</strong></div>
+                    <div class="d-flex justify-content-between"><span>Metadatos Dublin Core:</span><strong class="text-success">Completos</strong></div>
+                </div>
+
+                <div class="d-flex gap-2 justify-content-end border-top pt-2">
+                    <button onclick="cambiarEstadoRecurso('${r.id}', 'Aprobado')" class="btn btn-sm btn-success rounded-pill fw-bold">
+                        <i class="bi bi-check-lg"></i> Aprobar
+                    </button>
+                    <button onclick="cambiarEstadoRecurso('${r.id}', 'En Corrección')" class="btn btn-sm btn-outline-warning rounded-pill">
+                        Observar
+                    </button>
+                </div>
+            </div>
+        </div>
+        `;
+    });
+}
+
+function cambiarEstadoRecurso(id, estado) {
+    const r = recursosDB.find(x => x.id === id);
+    if (r) {
+        r.estado = estado;
+        alert(`Recurso ${id} actualizado a estado: "${estado}"`);
+        renderizarEvaluacion();
+    }
+}
+
+// ESTADÍSTICAS ADMIN
+function actualizarAdminStats() {
+    const total = recursosDB.length;
+    const aprobados = recursosDB.filter(x => x.estado === 'Aprobado').length;
+    const pendientes = total - aprobados;
+    const descargas = recursosDB.reduce((acc, x) => acc + x.descargas, 0);
+
+    document.getElementById('adminTotalRecursos').textContent = total;
+    document.getElementById('adminAprobados').textContent = aprobados;
+    document.getElementById('adminPendientes').textContent = pendientes;
+    document.getElementById('adminDescargas').textContent = descargas.toLocaleString();
+}
+
+// INICIALIZACIÓN
+document.addEventListener('DOMContentLoaded', () => {
+    renderizarCatalogo();
+    dibujarRuleta();
+    cambiarRol('docente');
+});
+</script>
+</body>
+</html>

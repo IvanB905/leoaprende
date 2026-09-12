@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lecturas Cortas con Pictogramas: La Ranita y el Oso - LeoAprende</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Nunito', sans-serif; background: #f8fafc; color: #1e293b; }
+        .hoja-trabajo {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 2px dashed #cbd5e1;
+        }
+        .cuento-box {
+            background: #f0fdf4;
+            border: 2px solid #86efac;
+            border-radius: 16px;
+            padding: 25px;
+            font-size: 1.5rem;
+            line-height: 2.2;
+        }
+        .picto {
+            font-size: 2rem;
+            vertical-align: middle;
+            margin: 0 4px;
+        }
+        @media print {
+            .btn-imprimir { display: none; }
+            .hoja-trabajo { box-shadow: none; border: 1px solid #ccc; margin: 0; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container my-3 text-center btn-imprimir">
+    <a href="../recurso.php?id=rec-003" class="btn btn-outline-secondary me-2">← Volver a la Ficha del Repositorio</a>
+    <button onclick="window.print()" class="btn btn-success fw-bold">🖨️ Imprimir Lectura con Pictogramas</button>
+</div>
+
+<div class="hoja-trabajo">
+    <div class="d-flex justify-content-between border-bottom pb-3 mb-4">
+        <div>
+            <h4 class="fw-bold mb-0 text-success">LeoAprende • Lecturas con Pictogramas</h4>
+            <p class="mb-0 text-muted small">Comprensión Lectora y Vocabulario Inicial</p>
+        </div>
+        <div class="text-end small">
+            <div><strong>Nombre:</strong> ____________________________________</div>
+            <div class="mt-1"><strong>Fecha:</strong> _______________ <strong>Grado:</strong> 1°</div>
+        </div>
+    </div>
+
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-dark">🐸 La Ranita Rosita y el Oso Meloso 🐻</h2>
+        <p class="text-muted">Sigue la lectura con tu dedo. Cada vez que veas un dibujo, di su nombre en voz alta:</p>
+    </div>
+
+    <div class="cuento-box mb-4">
+        Había una vez una <span class="picto">🐸</span> <strong>ranita</strong> que vivía cerca del <span class="picto">🌊</span> <strong>río</strong>.<br>
+        Un día, la ranita vio salir el <span class="picto">☀️</span> <strong>sol</strong> y cantó con alegría.<br>
+        En el camino se encontró con su amigo el <span class="picto">🐻</span> <strong>oso</strong>.<br>
+        El oso llevaba una jarra con dulce <span class="picto">🍯</span> <strong>miel</strong>.<br>
+        Juntos se sentaron bajo un gran <span class="picto">🌳</span> <strong>árbol</strong> a compartir la merienda.
+    </div>
+
+    <h5 class="fw-bold text-dark mb-3">Preguntas de Comprensión:</h5>
+    <div class="p-3 bg-light rounded-3 border">
+        <div class="mb-3">
+            <p class="fw-bold mb-1">1. ¿Quién vivía cerca del río?</p>
+            <div class="d-flex gap-4">
+                <label><input type="radio" name="p1"> La ranita 🐸</label>
+                <label><input type="radio" name="p1"> El león 🦁</label>
+                <label><input type="radio" name="p1"> El gato 🐱</label>
+            </div>
+        </div>
+        <div>
+            <p class="fw-bold mb-1">2. ¿Qué llevaba el oso en su jarra?</p>
+            <div class="d-flex gap-4">
+                <label><input type="radio" name="p2"> Agua 💧</label>
+                <label><input type="radio" name="p2"> Miel 🍯</label>
+                <label><input type="radio" name="p2"> Leche 🥛</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-4 pt-3 border-top text-muted small">
+        Recurso Educativo Abierto (REDA) • Repositorio LeoAprende • Licencia CC BY-NC 4.0
+    </div>
+</div>
+
+</body>
+</html>
