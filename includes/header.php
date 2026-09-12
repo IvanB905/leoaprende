@@ -111,11 +111,6 @@ $rolesInfo = [
                     </a>
                 </li>
                 <?php endif; ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="documento_entrega_apa7.html" target="_blank">
-                        <i class="bi bi-file-earmark-text-fill text-info me-1"></i> Documento APA 7
-                    </a>
-                </li>
             </ul>
 
             <div class="d-flex align-items-center gap-2">

@@ -30,25 +30,22 @@
             </div>
 
             <div class="col-6 col-lg-3">
-                <h6 class="fw-bold text-dark mb-3">Marco Académico</h6>
+                <h6 class="fw-bold text-dark mb-3">Estándares y Calidad</h6>
                 <ul class="list-unstyled small d-flex flex-column gap-2 text-muted">
-                    <li><a href="documento_entrega_apa7.html#contexto" target="_blank" class="text-decoration-none text-muted hover-link">Contexto y Justificación Pedagógica</a></li>
-                    <li><a href="documento_entrega_apa7.html#metadatos" target="_blank" class="text-decoration-none text-muted hover-link">Esquema Dublin Core & LOM</a></li>
-                    <li><a href="documento_entrega_apa7.html#flujos" target="_blank" class="text-decoration-none text-muted hover-link">Flujos de Carga, Revisión y Descarga</a></li>
-                    <li><a href="documento_entrega_apa7.html#evaluacion" target="_blank" class="text-decoration-none text-muted hover-link">Rúbrica Curatorial LORI</a></li>
-                    <li><a href="documento_entrega_apa7.html#etica" target="_blank" class="text-decoration-none text-muted hover-link">Declaración Ética IAG (Ley 23 de 1982)</a></li>
+                    <li><span class="text-muted"><i class="bi bi-check2"></i> Catalogación Dublin Core (15 campos)</span></li>
+                    <li><span class="text-muted"><i class="bi bi-check2"></i> Perfil Pedagógico IEEE LOM</span></li>
+                    <li><span class="text-muted"><i class="bi bi-check2"></i> Curaduría de Contenido LORI</span></li>
+                    <li><span class="text-muted"><i class="bi bi-check2"></i> Tipografía Escolar Accesible</span></li>
+                    <li><span class="text-muted"><i class="bi bi-check2"></i> Licencias Abiertas Creative Commons</span></li>
                 </ul>
             </div>
 
             <div class="col-lg-3">
-                <h6 class="fw-bold text-dark mb-3">Información de Entrega</h6>
+                <h6 class="fw-bold text-dark mb-3">Comunidad Docente</h6>
                 <div class="card border-0 bg-light p-3 rounded-3 small">
-                    <p class="mb-1 fw-bold text-primary"><i class="bi bi-folder2-open me-1"></i> Actividad 2: Diseño y Prototipo</p>
-                    <p class="mb-1 text-muted">Repositorio de Recursos Educativos Digitales</p>
-                    <p class="mb-2 text-muted"><i class="bi bi-award me-1"></i> Formato APA 7.ª Edición</p>
-                    <a href="documento_entrega_apa7.html" target="_blank" class="btn btn-sm btn-outline-primary fw-bold">
-                        <i class="bi bi-file-pdf me-1"></i> Ver Documento Escrito
-                    </a>
+                    <p class="mb-1 fw-bold text-primary"><i class="bi bi-heart-fill text-danger me-1"></i> Red de Apoyo Escolar</p>
+                    <p class="mb-1 text-muted">Recursos diseñados por y para maestras de primera infancia y básica primaria.</p>
+                    <p class="mb-0 text-muted"><i class="bi bi-people me-1"></i> Comparte tus fichas de lectura libremente.</p>
                 </div>
             </div>
         </div>

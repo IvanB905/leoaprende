@@ -27,9 +27,6 @@ $categoriaSeleccionada = $_GET['cat'] ?? '';
             <a href="juegos/ruleta.php" class="btn btn-outline-light btn-lg rounded-pill px-4 fw-bold">
                 <i class="bi bi-controller text-warning me-1"></i> Jugar a la Ruleta de Sílabas
             </a>
-            <a href="documento_entrega_apa7.html" target="_blank" class="btn btn-light btn-lg rounded-pill px-4 fw-bold text-primary">
-                <i class="bi bi-file-earmark-pdf-fill text-danger me-1"></i> Documento APA 7
-            </a>
         </div>
     </div>
 </section>

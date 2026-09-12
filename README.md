@@ -31,8 +31,6 @@ Centralizar, categorizar y compartir recursos educativos abiertos (guías imprim
    - Dimensiones pedagógicas del perfil **IEEE LOM** (interactividad, dificultad, rango de edad).
 4. **Juego Interactivo "La Ruleta de las Sílabas":**
    - Desarrollado en Canvas con **síntesis de voz en español** (Web Speech API) que pronuncia los fonemas en voz alta.
-5. **Documento Formal APA 7.ª Edición:**
-   - Monografía académica con justificación, marcos conceptuales y declaración de uso ético de IAG (`documento_entrega_apa7.html`).
 
 ---
 
@@ -41,5 +39,3 @@ Centralizar, categorizar y compartir recursos educativos abiertos (guías imprim
 * `index.php`, `recurso.php`, `subir.php`, `evaluacion.php`, `admin.php`: Versión modular para servidores PHP / XAMPP.
 * `juegos/ruleta.php`: Juego interactivo de sílabas con audio.
 * `recursos_archivos/`: Materiales imprimibles reales de alta resolución (PDF/HTML).
-* `documento_entrega_apa7.html`: Documento formal en formato APA 7 listo para guardar como PDF.
-* `DOCUMENTO_ENTREGA_APA7.md`: Versión Markdown del documento de entrega.

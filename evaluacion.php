@@ -69,9 +69,9 @@ require_once __DIR__ . '/includes/header.php';
                 </p>
             </div>
             <div class="col-md-4 text-md-end mt-3 mt-md-0">
-                <a href="documento_entrega_apa7.html#evaluacion" target="_blank" class="btn btn-sm btn-outline-primary fw-bold rounded-pill">
-                    <i class="bi bi-book-half"></i> Ver Rúbrica Completa en APA 7
-                </a>
+                <span class="badge bg-primary-subtle text-primary border border-primary px-3 py-2 rounded-pill fw-bold">
+                    <i class="bi bi-patch-check-fill"></i> Estándar de Curaduría Activo
+                </span>
             </div>
         </div>
     </div>
