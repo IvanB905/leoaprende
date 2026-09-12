@@ -10,7 +10,7 @@
 
 ## 🌐 Demostración en Vivo (GitHub Pages)
 Puedes visualizar y probar el repositorio interactivo directamente desde tu navegador:
-👉 **[Ver Prototipo LeoAprende en GitHub Pages](https://tu-usuario.github.io/tu-repositorio/)**
+👉 **[Ver Prototipo LeoAprende en GitHub Pages](https://ivanb905.github.io/leoaprende/)**
 
 ---
 

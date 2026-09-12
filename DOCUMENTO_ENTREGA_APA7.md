@@ -175,7 +175,8 @@ Para la evaluación y curaduría de los recursos educativos digitales se adoptó
 ### 8.1. Arquitectura Técnica
 * **Entorno de Despliegue:** Servidor Apache local (XAMPP).
 * **Ruta de Instalación:** `c:\xampp\htdocs\repositorio\`
-* **Enlace Local de Acceso:** `http://localhost/repositorio/`
+* **Enlace Web en Línea (GitHub Pages):** [https://ivanb905.github.io/leoaprende/](https://ivanb905.github.io/leoaprende/)
+* **Enlace Local de Acceso (XAMPP):** `http://localhost/repositorio/`
 * **Tecnologías Implementadas:** PHP 8.x para lógica de negocio y procesamiento de estados, JavaScript ES6 con API Canvas y Web Speech para juegos interactivos, CSS3 moderno con sistema de diseño educativo responsivo y almacenamiento en base de datos ligera estructurada en JSON (`data/recursos.json`).
 
 ### 8.2. Módulos y Pantallas del Prototipo
